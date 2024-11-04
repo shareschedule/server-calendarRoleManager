@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: calendarRoleManager
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://son:1234@localhost:9000
+  kafka:
+    consumer:
+      bootstrap-servers: http://localhost:29092
+      group-id: "calendar-role-manager"
+      acks: 1
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#      properties:
+#        spring:
+#          json:
+#            trusted.packages: "*"
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://son:1234@localhost:8761/eureka
