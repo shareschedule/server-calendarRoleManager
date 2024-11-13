@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 
 
 @Entity
-@Table(catalog = "calendar_role", name = "calendar_user_role")
+@Table(catalog = "role", name = "calendar_user_role")
 @EntityListeners(AuditingEntityListener::class)
 class CalendarRoleEntity (
     id: Long? = null,
