@@ -6,11 +6,14 @@ import com.schedule.share.rolemanager.domain.CalendarRole
 import com.schedule.share.rolemanager.domain.mapper.toDomain
 import org.apache.hc.client5.http.HttpResponseException
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class CalendarRoleQueryAdaptor (
     private val calendarRoleRepository: CalendarRoleRepository
 ): CalendarRoleQueryPort{
+
+    @Transactional(readOnly = true)
     override fun findByUserId(userId: Long): CalendarRole {
         return calendarRoleRepository.findByUserId(userId)
             //TODO : Exception Handler 정의하기
@@ -18,6 +21,7 @@ class CalendarRoleQueryAdaptor (
             .toDomain()
     }
 
+    @Transactional(readOnly = true)
     override fun findByCalendarId(calendarId: Long): CalendarRole {
         return calendarRoleRepository.findByCalendarId(calendarId)
             //TODO : Exception Handler 정의하기
